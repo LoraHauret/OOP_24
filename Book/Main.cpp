@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 //#include "Book.h"
 #include <iostream>
 using namespace std;
@@ -14,17 +14,17 @@ public:
     string plot;
     string language;
     size_t number_pages;
-    size_t print_run; // тираж
+    size_t print_run; // С‚РёСЂР°Р¶
     size_t count;
 
 public:
     Book();
     Book(string, string, size_t, string, string, string, string, size_t, size_t);
-    void PrintBook();	    // распечатать книгу
-    void RunBookOut(int);  // издать книгу
-    void WritePages(int);  // написать продолжение истории
-    void SellBook(int count = 1);  // продать книгу
-    void ReadBook();      // Прочитать книгу
+    void PrintBook();	    // СЂР°СЃРїРµС‡Р°С‚Р°С‚СЊ РєРЅРёРіСѓ
+    void RunBookOut(int);  // РёР·РґР°С‚СЊ РєРЅРёРіСѓ
+    void WritePages(int);  // РЅР°РїРёСЃР°С‚СЊ РїСЂРѕРґРѕР»Р¶РµРЅРёРµ РёСЃС‚РѕСЂРёРё
+    void SellBook(int count = 1);  // РїСЂРѕРґР°С‚СЊ РєРЅРёРіСѓ
+    void ReadBook();      // РџСЂРѕС‡РёС‚Р°С‚СЊ РєРЅРёРіСѓ
 
     friend ostream& operator<<(ostream& os, Book b);
 };
