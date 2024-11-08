@@ -3,6 +3,7 @@
 #include <iostream>
 using namespace std;
 
+// проект с измененной кодировкой
 class Book
 {
 public:

@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <string.h>
 #include <string>
@@ -6,7 +6,7 @@
 #include <fstream>
 #include <stdio.h>
 using namespace std;
-
+// РёР·РјРµРЅРµРЅР° РєРѕРґРѕРІР°СЏ СЃС‚СЂР°РЅРёС†Р° 
 class Element
 {  
     Element();
@@ -15,20 +15,20 @@ public:
     enum class PHASE{ UNDEFINED = 0, GAS, SOLID, LIQUID};
     
     //block
-    float atomic_weight;          // относительная атомная масса
-    float* density = nullptr;                // плотность
-    float* melting_point = nullptr;          // температура плавления
-    float* boiling_point = nullptr;          // температура кипения
-    float* specific_heat_capacity = nullptr; // удельная теплоемкость
-    float* electronegativity = nullptr;       // электронегативность
-    size_t atomic_number;          // порядковый номер элемента и количество протонов
-    size_t neutrons_number;        // количество нейтронов, если отличается от стандарта, то изотоп
-    Origin name_origin;            // происхождение названия
-    PHASE phase;                   // агрегатное состояние
-    string name;                   // название элемента
-    unsigned short group;          //  группа
-    unsigned short period;         // период
-    string symbol;                 // символ элемента
+    float atomic_weight;          // РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅР°СЏ Р°С‚РѕРјРЅР°СЏ РјР°СЃСЃР°
+    float* density = nullptr;                // РїР»РѕС‚РЅРѕСЃС‚СЊ
+    float* melting_point = nullptr;          // С‚РµРјРїРµСЂР°С‚СѓСЂР° РїР»Р°РІР»РµРЅРёСЏ
+    float* boiling_point = nullptr;          // С‚РµРјРїРµСЂР°С‚СѓСЂР° РєРёРїРµРЅРёСЏ
+    float* specific_heat_capacity = nullptr; // СѓРґРµР»СЊРЅР°СЏ С‚РµРїР»РѕРµРјРєРѕСЃС‚СЊ
+    float* electronegativity = nullptr;       // СЌР»РµРєС‚СЂРѕРЅРµРіР°С‚РёРІРЅРѕСЃС‚СЊ
+    size_t atomic_number;          // РїРѕСЂСЏРґРєРѕРІС‹Р№ РЅРѕРјРµСЂ СЌР»РµРјРµРЅС‚Р° Рё РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕС‚РѕРЅРѕРІ
+    size_t neutrons_number;        // РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРµР№С‚СЂРѕРЅРѕРІ, РµСЃР»Рё РѕС‚Р»РёС‡Р°РµС‚СЃСЏ РѕС‚ СЃС‚Р°РЅРґР°СЂС‚Р°, С‚Рѕ РёР·РѕС‚РѕРї
+    Origin name_origin;            // РїСЂРѕРёСЃС…РѕР¶РґРµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ
+    PHASE phase;                   // Р°РіСЂРµРіР°С‚РЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ
+    string name;                   // РЅР°Р·РІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р°
+    unsigned short group;          //  РіСЂСѓРїРїР°
+    unsigned short period;         // РїРµСЂРёРѕРґ
+    string symbol;                 // СЃРёРјРІРѕР» СЌР»РµРјРµРЅС‚Р°
 
     
 
@@ -48,41 +48,41 @@ public:
 
 ostream& operator<<(ostream& os, Element& el)
 {
-    os << "название элемента:\t" << el.name << "\n";
-    os << "символ элемента:\t" << el.symbol << "\n";
-    os << "группа:\t\t\t" << el.group << "\n";
-    os << "период:\t\t\t" << el.period << "\n";
-    os << "относит. атомная масса:\t" << el.atomic_weight << "\n";
-    os << "порядковый номер:\t" << el.atomic_number << "\n";
-    os << "количество нейтронов:\t" << el.neutrons_number << "\n";
-    os << "происхождение названия:\t";
+    os << "РЅР°Р·РІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р°:\t" << el.name << "\n";
+    os << "СЃРёРјРІРѕР» СЌР»РµРјРµРЅС‚Р°:\t" << el.symbol << "\n";
+    os << "РіСЂСѓРїРїР°:\t\t\t" << el.group << "\n";
+    os << "РїРµСЂРёРѕРґ:\t\t\t" << el.period << "\n";
+    os << "РѕС‚РЅРѕСЃРёС‚. Р°С‚РѕРјРЅР°СЏ РјР°СЃСЃР°:\t" << el.atomic_weight << "\n";
+    os << "РїРѕСЂСЏРґРєРѕРІС‹Р№ РЅРѕРјРµСЂ:\t" << el.atomic_number << "\n";
+    os << "РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРµР№С‚СЂРѕРЅРѕРІ:\t" << el.neutrons_number << "\n";
+    os << "РїСЂРѕРёСЃС…РѕР¶РґРµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ:\t";
     switch (el.name_origin)
     {
     case Element::Origin::GREEK:
-	os << "греческое\n";
+	os << "РіСЂРµС‡РµСЃРєРѕРµ\n";
 	break;
     case Element::Origin::LATIN:
-	os << "латинское\n";
+	os << "Р»Р°С‚РёРЅСЃРєРѕРµ\n";
 	break;
     case Element::Origin::INDIA:
-	os << "индийское\n";
+	os << "РёРЅРґРёР№СЃРєРѕРµ\n";
 	break;
     case Element::Origin::UNDEFINED:
     default:
 	os << "-\n";
 	break;
     }
-    os << "агрегатное состояние:\t";
+    os << "Р°РіСЂРµРіР°С‚РЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ:\t";
     switch (el.phase)
     {
     case Element::PHASE::GAS:
-	os << "газообразное\n";
+	os << "РіР°Р·РѕРѕР±СЂР°Р·РЅРѕРµ\n";
 	break;
     case Element::PHASE::LIQUID:
-	os << "жидкое\n";
+	os << "Р¶РёРґРєРѕРµ\n";
 	break;
     case Element::PHASE::SOLID:
-	os << "твердое\n";
+	os << "С‚РІРµСЂРґРѕРµ\n";
 	break;
     case Element::PHASE::UNDEFINED:
     default:
@@ -90,19 +90,19 @@ ostream& operator<<(ostream& os, Element& el)
 	break;
     }
 
-    os << "удельная теплоемкость:\t";
+    os << "СѓРґРµР»СЊРЅР°СЏ С‚РµРїР»РѕРµРјРєРѕСЃС‚СЊ:\t";
      el.density == nullptr ? os <<"-": os << *el.density;
      os << "\n";
-     os << "температура плавления:\t";
+     os << "С‚РµРјРїРµСЂР°С‚СѓСЂР° РїР»Р°РІР»РµРЅРёСЏ:\t";
      el.melting_point == nullptr ? os << "-" : os << *el.melting_point;
      os<<"\n";
-     os << "температура кипения:\t";
+     os << "С‚РµРјРїРµСЂР°С‚СѓСЂР° РєРёРїРµРЅРёСЏ:\t";
      el.boiling_point == nullptr ? os << "-" : os << *el.boiling_point;
      os << "\n"; 
-    os << "удельная теплоемкость:\t";
+    os << "СѓРґРµР»СЊРЅР°СЏ С‚РµРїР»РѕРµРјРєРѕСЃС‚СЊ:\t";
     el.specific_heat_capacity == nullptr ? os << "-" : os << *el.specific_heat_capacity;
     os << "\n";  
-    os << "электронегативность:\t";
+    os << "СЌР»РµРєС‚СЂРѕРЅРµРіР°С‚РёРІРЅРѕСЃС‚СЊ:\t";
     el.electronegativity == nullptr ? os << "-" : os << *el.electronegativity;
     os << "\n"; 
     return os;
@@ -179,14 +179,14 @@ Element* Element::loadElement(ifstream& reader)
     string symbol;
     string name;    
     Element::Origin name_origin; 
-    unsigned short group;          //  группа
+    unsigned short group;          //  РіСЂСѓРїРїР°
     unsigned short period;
-    float atomic_weight;          // относительная атомная масса
-    float* density = nullptr;                // плотность
-    float* melting_point = nullptr;          // температура плавления
-    float* boiling_point = nullptr;          // температура кипения
-    float* specific_heat_capacity = nullptr; // удельная теплоемкость
-    float* electronegativity = nullptr;       // электронегативность    
+    float atomic_weight;          // РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅР°СЏ Р°С‚РѕРјРЅР°СЏ РјР°СЃСЃР°
+    float* density = nullptr;                // РїР»РѕС‚РЅРѕСЃС‚СЊ
+    float* melting_point = nullptr;          // С‚РµРјРїРµСЂР°С‚СѓСЂР° РїР»Р°РІР»РµРЅРёСЏ
+    float* boiling_point = nullptr;          // С‚РµРјРїРµСЂР°С‚СѓСЂР° РєРёРїРµРЅРёСЏ
+    float* specific_heat_capacity = nullptr; // СѓРґРµР»СЊРЅР°СЏ С‚РµРїР»РѕРµРјРєРѕСЃС‚СЊ
+    float* electronegativity = nullptr;       // СЌР»РµРєС‚СЂРѕРЅРµРіР°С‚РёРІРЅРѕСЃС‚СЊ    
     Element::PHASE phase;   //size_t neutrons_number;        
 
     reader >> atomic_number >> symbol >> name;
@@ -242,11 +242,11 @@ Element** Element::loadElements(string path, size_t& count)
     std::ifstream reader(path);
     if (reader)
     {
-	reader >> count;	// вначале записано количество всех элементов в файле
+	reader >> count;	// РІРЅР°С‡Р°Р»Рµ Р·Р°РїРёСЃР°РЅРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ РІ С„Р°Р№Р»Рµ
 	
 	Element** ret = new Element*[count];
 	for (int i = 0; i < count && !reader.eof(); i++)
-		ret[i] = loadElement(reader);             // в открытом файле курсор уже переставлен на первое поле элемента
+		ret[i] = loadElement(reader);             // РІ РѕС‚РєСЂС‹С‚РѕРј С„Р°Р№Р»Рµ РєСѓСЂСЃРѕСЂ СѓР¶Рµ РїРµСЂРµСЃС‚Р°РІР»РµРЅ РЅР° РїРµСЂРІРѕРµ РїРѕР»Рµ СЌР»РµРјРµРЅС‚Р°
 	reader.close();
 
 	return ret;
@@ -259,7 +259,7 @@ int main()
 {
     setlocale(0, "");
     
-    { // проверка работы деструктора
+    { // РїСЂРѕРІРµСЂРєР° СЂР°Р±РѕС‚С‹ РґРµСЃС‚СЂСѓРєС‚РѕСЂР°
 	Element el((string)"Hydrogen", (string)"H", 1, 1, 1.008f, 1, 1, Element::Origin::GREEK, Element::PHASE::GAS, new float(0.00008988f), new float(14.01f));
 	cout << el << "\n";
 
@@ -284,7 +284,7 @@ int main()
 	delete[]el_array;
     }
     
-    cout<<"the end!"; // проверка верного освобождения памяти в массиве элементов
+    cout<<"the end!"; // РїСЂРѕРІРµСЂРєР° РІРµСЂРЅРѕРіРѕ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РїР°РјСЏС‚Рё РІ РјР°СЃСЃРёРІРµ СЌР»РµРјРµРЅС‚РѕРІ
     return 0;
 
 }

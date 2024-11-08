@@ -12,7 +12,6 @@ public:
     enum Type { BASIC = 1, DECORATIVE, RELIEF, OPENWORK };	     // основная, декоративная, рельефная, ажурная
     enum Application { KNITTING = 1, CROCHETING };		     // вязание на спицах, вязание крючком
 
-private:
     string name_en;						     // название петли на английском
     string name_ru;						     // название петли на русском
     string img_path;						     // путь к изображению петли
@@ -32,6 +31,7 @@ public:
     void moveStitch(int, int);
     void moveStitchX(int);
     void moveStitchY(int);
+
     friend ostream& operator<<(ostream& os, Stitch s);
 }; 
 
