@@ -66,7 +66,7 @@ public:
     }
 
     void PushBack(int value)
-    {
+    {	
 	EnsureCapacity(); // проверка, хватит ли места для нового элемента
 	data[size] = value;
 	size++;
@@ -148,5 +148,6 @@ public:
     bool operator>=(const  Vector& other);
 
     friend ostream& operator<<(ostream& os, Vector& v);
+    friend istream& operator>>(istream& is, Vector& v);
 };
 

@@ -18,6 +18,31 @@ ostream& operator<<(ostream& os, Vector& v)
 
     return os;
 }
+istream& operator>>(istream& is, Vector& v) {
+    unsigned int count;
+    cout << "Введите количество элементов вектора: ";
+    is >> count;
+    v.EnsureCapacity();
+    
+    int val;
+    try
+    {
+        for (int i = 0; i < count; i++)
+        {
+            cout << "Введите элемент # " << i + 1 << ": ";
+            is >> val;
+            v.PushBack(val);            
+        }
+         
+    }
+    catch (exception ex)
+    {
+        cout << "данные не введены\n Причина: ";
+        cout << ex.what() << "\n";
+    }
+    return is;
+
+}
 
 // Insert (вставка одного элемента в массив по указанному индексу, с проверкой на выход за пределы массива)
 bool Vector::Insert(int index, int value, int countinsert)//куда вставлять, что вставлять, сколько раз
@@ -295,7 +320,14 @@ Vector::Vector(const Vector& other)
     }
     else
     {
-        Vector();
+        //Vector();
+        if (capacity < 10)
+        {
+            capacity = 10;
+        }
+        this->capacity = capacity;
+        data = new int[capacity];
+        size = 0;
         
     }        
 }
@@ -392,11 +424,16 @@ void Vector::IncreaseCapacity(int min_incr)
 }
 void Vector::EnsureCapacity()
 {
+    /*if (data == nullptr)
+        data = new int[10];*/
+
     if (size == capacity)
         IncreaseCapacity();
 }
 void Vector::EnsureCapacity(int incr)
 {
+    /*if (data == nullptr)
+        data = new int[10];*/
     if (size + incr >= capacity)
         IncreaseCapacity(incr);
 }

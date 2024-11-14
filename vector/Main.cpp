@@ -1,8 +1,6 @@
 ﻿#pragma once
 #include "vector.h"
 
-
-
 int main()
 {
     setlocale(0, "");
@@ -187,6 +185,8 @@ int main()
     for (int i = 0; i < ar5.GetSize(); i++)
 	cout << ar5[i] << " ";
     cout << "\n";
-   
+    cout << "\nВвод значений при помощи перегруженного оператора >>\n";
+    cin >> ar6;
+    cout << ar6;
     return 1;
 }
