@@ -11,7 +11,7 @@ private:
 public:
     enum Type { BASIC = 1, DECORATIVE, RELIEF, OPENWORK };	     // основная, декоративная, рельефная, ажурная
     enum Application { KNITTING = 1, CROCHETING };		     // вязание на спицах, вязание крючком
-
+private:
     string name_en;						     // название петли на английском
     string name_ru;						     // название петли на русском
     string img_path;						     // путь к изображению петли
@@ -31,6 +31,25 @@ public:
     void moveStitch(int, int);
     void moveStitchX(int);
     void moveStitchY(int);
+
+    const string& get_name_en();
+    const string& get_name_ru();
+    const string& get_img_path();
+    Type get_type();
+    Application get_zone_appl();
+    const string& get_description();
+    const string& get_implementation_technique();
+    const COORD& get_start_pos();
+    
+    void set_name_en(const string&);
+    void set_name_ru(const string&);
+    void set_img_path(const string&);
+    void set_type(const Type);
+    void set_zone_appl(const Application);
+    void set_description(const string&);
+    void set_implementation_technique(const string&);
+    void set_start_pos(const COORD&);
+    
 
     friend ostream& operator<<(ostream& os, Stitch s);
 }; 
@@ -82,16 +101,16 @@ ostream& operator<<(ostream& os, Stitch::Application appl)
     switch (appl)
     {
     case 1:
-	cout << "вязание на спицах";
+	os << "вязание на спицах";
 	break;
     case 2:
-	cout << "вязание крючком";
+	os << "вязание крючком";
 	break;
     default:
-	cout << " не определено";
+	os << " не определено";
 	break;
     }
-    cout << "\n";
+    os << "\n";
     return os;
 }
 ostream& operator<<(ostream& os, Stitch::Type type)
@@ -99,67 +118,109 @@ ostream& operator<<(ostream& os, Stitch::Type type)
     switch (type)
     {
     case 1:
-	cout << "базовая\n";
+	os << "базовая\n";
 	break;
     case 2:
-	cout << "декоративная\n";
+	os << "декоративная\n";
 	break;
     case 3:
-	cout << "рельефная\n";
+	os << "рельефная\n";
 	break;
     case 4:
-	cout << "ажурная\n";
+	os << "ажурная\n";
 	break;
     default:
-	cout << " не определен\n";
+	os << " не определен\n";
 	break;
     }
     return os;
 }
 ostream& operator<<(ostream& os, Stitch s)
 {
-    cout << "Английское название:\t" << s.name_en << "\n";
-    cout << "Русское название:\t" << s.name_ru << "\n";
-    cout<<"Путь к файлу:\t\t"<< s.img_path << "\n";
-    cout << "Тип:\t\t\t"<< s.type;
-    /*switch (s.type)
-    {
-    case 1:
-	cout << "базовая\n";
-	break;
-    case 2:
-	cout << "декоративная\n";
-	break;
-    case 3:
-	cout << "рельефная\n";
-	break;
-    case 4:
-	cout << "ажурная\n";
-	break;
-    default:
-	cout << " не определен\n";
-	break;
-    }*/
-	
-    cout << "Зона применения:\t"<<s.zone_appl;
-   /* switch(s.zone_appl)
-    {
-    case 1:
-	cout << "вязание на спицах";
-	break;
-    case 2:
-	cout << "вязание крючком";
-	break;
-    default:
-	cout << " не определено";
-	break;
-    }
-    cout<< "\n";*/
-    cout << "Описание:\t\t" << s.description << "\n";
-    cout << "Техника выполнения:\t" << s.implementation_technique << "\n";
-    cout << "Начальные координаты:\t{" << s.start_pos.X << ", "<<s.start_pos.Y << "}\n";
+    os << "Английское название:\t" << s.name_en << "\n";
+    os << "Русское название:\t" << s.name_ru << "\n";
+    os<<"Путь к файлу:\t\t"<< s.img_path << "\n";
+    os << "Тип:\t\t\t"<< s.type;	
+    os << "Зона применения:\t"<<s.zone_appl;
+    os << "Описание:\t\t" << s.description << "\n";
+    os << "Техника выполнения:\t" << s.implementation_technique << "\n";
+    os << "Начальные координаты:\t{" << s.start_pos.X << ", "<<s.start_pos.Y << "}\n";
     return os;
 }
+
+const string& Stitch::get_name_en()
+{
+    return name_en;
+}
+const string& Stitch::get_name_ru()
+{
+    return name_ru;
+}
+const string& Stitch::get_img_path()
+{
+    return img_path;
+}
+Stitch::Type Stitch::get_type()
+{
+    return type;
+}
+Stitch::Application Stitch::get_zone_appl()
+{
+    return zone_appl;
+}
+const string& Stitch::get_description()
+{
+    return description;
+}
+const string& Stitch::get_implementation_technique()
+{
+    return implementation_technique;
+}
+const COORD& Stitch::get_start_pos()
+{
+    return start_pos;
+}
+
+void Stitch::set_name_en(const string& val)
+{
+    name_en = val;
+}
+
+void Stitch::set_name_ru(const string& val)
+{
+    name_ru = val;
+}
+
+void Stitch::set_img_path(const string& val)
+{
+    img_path = val;
+}
+
+void Stitch::set_type(const Type val)
+{
+    type = val;
+}
+
+void Stitch::set_zone_appl(const Application val)
+{
+    zone_appl = val;
+}
+
+void Stitch::set_description(const string& val)
+{
+    description = val;
+}
+
+void Stitch::set_implementation_technique(const string& val)
+{
+    implementation_technique = val;
+}
+
+void Stitch::set_start_pos(const COORD& val)
+{
+    start_pos = val;
+}
+
 
 int main()
 {

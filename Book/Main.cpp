@@ -4,9 +4,7 @@
 using namespace std;
 
 // проект с измененной кодировкой
-class Book
-{
-public:
+class Book{
     string name;
     string author;
     size_t publish_year;
@@ -26,6 +24,29 @@ public:
     void WritePages(int);  // написать продолжение истории
     void SellBook(int count = 1);  // продать книгу
     void ReadBook();      // Прочитать книгу
+
+
+    const string& get_name();
+    const string& get_author();
+    const size_t& get_publish_year();
+    const string& get_publisher();
+    const string& get_genre();
+    const string& get_plot();
+    const string& get_language();
+    const size_t& get_number_pages();
+    const size_t& get_print_run();
+    const size_t& get_count();
+
+    void set_name(const string&);
+    void set_author(const string&);
+    void set_publish_year(const size_t&);
+    void set_publisher(const string&);
+    void set_genre(const string&);
+    void set_plot(const string&);
+    void set_language(const string&);
+    void set_number_pages(const size_t&);
+    void set_print_run(const size_t&);
+    void set_count(const size_t&);
 
     friend ostream& operator<<(ostream& os, Book b);
 };
@@ -109,6 +130,88 @@ void Book::ReadBook()
     cout << "The book is being read aloud...." << "\n";
 }
 
+const string& Book::get_name()
+{
+    return name;
+}
+const string& Book::get_author()
+{
+    return author;
+}
+const size_t& Book::get_publish_year()
+{
+    return publish_year;
+}
+const string& Book::get_publisher()
+{
+    return publisher;
+}
+const string& Book::get_genre()
+{
+    return genre;
+}
+const string& Book::get_plot()
+{
+    return plot;
+}
+const string& Book::get_language()
+{
+    return language;
+}
+const size_t& Book::get_number_pages()
+{
+    return number_pages;
+}
+const size_t& Book::get_print_run()
+{
+    return print_run;
+}
+const size_t& Book::get_count()
+{
+    return count;
+}
+
+void Book::set_name(const string& val)
+{
+    this->name = name;
+}
+void Book::set_author(const string& val)
+{
+    this->author = val;
+}
+void Book::set_publish_year(const size_t& val)
+{
+    this->publish_year = val;
+}
+void Book::set_publisher(const string& val)
+{
+    this->publisher = val;
+}
+void Book::set_genre(const string& val)
+{
+    this->genre = val;   
+}
+void Book::set_plot(const string& val)
+{
+    this->plot = val;
+}
+void Book::set_language(const string& val)
+{
+    this->language = val;
+}
+void Book::set_number_pages(const size_t& val)
+{
+    this->number_pages = val;
+}
+void Book::set_print_run(const size_t& val)
+{
+    this->print_run = val;
+}
+void Book::set_count(const size_t& val)
+{
+    this->count = val;
+}
+
 int main()
 {
     Book b;
@@ -128,6 +231,6 @@ int main()
     b1.SellBook(50);
     b1.PrintBook();
     b1.SellBook(60);
-    b1.PrintBook();/**/
+    b1.PrintBook();
     cout << b1;
 }
