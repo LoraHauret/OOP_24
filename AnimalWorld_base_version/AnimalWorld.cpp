@@ -842,7 +842,7 @@ void AnimalWorld::BornHerbivore(Being* b, Being::ClassType t, unsigned short cou
 	    {
 		Being* rabbitmale = new Rabbit();
 		SetBeingOnBoard(rabbitmale);
-		herbivores.push_back(rabbitmale);		
+		herbivores.push_back(rabbitmale);
 	    }
 	    else
 	    {
@@ -858,7 +858,7 @@ void AnimalWorld::BornHerbivore(Being* b, Being::ClassType t, unsigned short cou
 	    {
 		Being* cock = new Chicken();
 		SetBeingOnBoard(cock);
-		herbivores.push_back(cock);		
+		herbivores.push_back(cock);
 	    }
 	    else
 	    {
@@ -873,8 +873,8 @@ void AnimalWorld::BornHerbivore(Being* b, Being::ClassType t, unsigned short cou
 	    if (s == 0)
 	    {
 		Being* pigmale = new Pig();
-		SetBeingOnBoard(pigmale);		
-		herbivores.push_back(pigmale);		
+		SetBeingOnBoard(pigmale);
+		herbivores.push_back(pigmale);
 	    }
 	    else
 	    {
@@ -889,7 +889,7 @@ void AnimalWorld::BornHerbivore(Being* b, Being::ClassType t, unsigned short cou
 	    if (s == 0)
 	    {
 		Being* bull = new Cow();
-		SetBeingOnBoard(bull); 
+		SetBeingOnBoard(bull);
 		herbivores.push_back(bull);
 	    }
 	    else
@@ -904,7 +904,7 @@ void AnimalWorld::BornHerbivore(Being* b, Being::ClassType t, unsigned short cou
 	    s = rand() % 2;
 	    if (s == 0)
 	    {
-		Being * horsemale = new Horse();
+		Being* horsemale = new Horse();
 		SetBeingOnBoard(horsemale);
 		herbivores.push_back(horsemale);
 	    }
@@ -920,13 +920,13 @@ void AnimalWorld::BornHerbivore(Being* b, Being::ClassType t, unsigned short cou
 	    s = rand() % 2;
 	    if (s == 0)
 	    {
-		Being* zebramale = new Horse();
+		Being* zebramale = new Zebra();
 		SetBeingOnBoard(zebramale);
 		herbivores.push_back(zebramale);
 	    }
 	    else
 	    {
-		Being* zebrafemale = new Horse();
+		Being* zebrafemale = new Zebra();
 		zebrafemale->SetSex(L'F');
 		SetBeingOnBoard(zebrafemale);
 		herbivores.push_back(zebrafemale);
@@ -936,26 +936,19 @@ void AnimalWorld::BornHerbivore(Being* b, Being::ClassType t, unsigned short cou
 	    s = rand() % 2;
 	    if (s == 0)
 	    {
-		Being* mousemale = new Horse();
+		Being* mousemale = new Mouse();
 		SetBeingOnBoard(mousemale);
 		herbivores.push_back(mousemale);
 	    }
 	    else
 	    {
-		Being* mousefemale = new Horse();
+		Being* mousefemale = new Mouse();
 		mousefemale->SetSex(L'F');
 		SetBeingOnBoard(mousefemale);
 		herbivores.push_back(mousefemale);
 	    }
-	    break;
 	default:
-	    Being* unknown = new Being();
-	    unknown->SetSex(L'F');
-	    SetBeingOnBoard(unknown);
-	    predators.push_back(unknown);
 	    break;
-	    break;
-
 	}
     }
 }
