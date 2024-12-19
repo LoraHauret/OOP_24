@@ -45,9 +45,13 @@ int main()
     b1.PrintBook();
     b1.SellBook(60);
     b1.PrintBook();
-    cout << b1;
 
+    cout << "\n\nConverting to string:\n";
+    cout <<static_cast<string> (b);
+    cout << "\n\n";
+    cout << static_cast<string> (b1);
     cout << "\n";
     cout << boolalpha << (b == b1);
     cout<< "\n";
+   
 }

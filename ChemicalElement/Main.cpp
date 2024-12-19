@@ -6,7 +6,7 @@ int main()
     setlocale(0, "");
 
     Element el((string)"Hydrogen", (string)"H", 1, 1, 1.008f, 1, 1, Element::Origin::GREEK, Element::PHASE::GAS, new float(0.00008988f), new float(14.01f));
-    cout << el << "\n";
+    cout << static_cast<string> (el) << "\n";
 
     el.printElement();
 
@@ -24,7 +24,7 @@ int main()
     for (size_t i = 0; i < size; i++)
     {
         cout << "\n*********************\n";
-        cout << *el_array[i];
+        cout << static_cast<string> (*el_array[i]);
     }
     /*float aw = el_array[0]->get_atomic_weight();
     cout << aw << "\n";

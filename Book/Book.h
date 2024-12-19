@@ -68,5 +68,7 @@ public:
     void set_print_run(const size_t&);
     void set_count(const size_t&);
     void set_store(int);
-    friend ostream& operator<<(ostream& os, Book b);
+   
+    explicit operator std::string() const;
+    //friend ostream& operator<<(ostream& os, Book b);
 };

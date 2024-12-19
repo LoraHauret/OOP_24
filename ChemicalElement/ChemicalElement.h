@@ -86,7 +86,9 @@ public:
      bool operator>(const  Element& other);
      bool operator<=(const Element& other);
      bool operator>=(const Element& other);
-    friend ostream& operator<<(ostream& os, Element&);
+     Element& operator=(const Element& other);
+     explicit operator std::string() const;
+    //friend ostream& operator<<(ostream& os, Element&);
 };
 
 // vector<Element*> elements_set;

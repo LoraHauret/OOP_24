@@ -3,67 +3,67 @@
 
 int Element::count = 0;
 
-ostream& operator<<(ostream& os, Element& el)
-{
-    os << "название элемента:\t" << el.name << "\n";
-    os << "символ элемента:\t" << el.symbol << "\n";
-    os << "группа:\t\t\t" << el.group << "\n";
-    os << "период:\t\t\t" << el.period << "\n";
-    os << "относит. атомная масса:\t" << el.atomic_weight << "\n";
-    os << "порядковый номер:\t" << el.atomic_number << "\n";
-    os << "количество нейтронов:\t" << el.neutrons_number << "\n";
-    os << "происхождение названия:\t";
-    switch (el.name_origin)
-    {
-    case Element::Origin::GREEK:
-	os << "греческое\n";
-	break;
-    case Element::Origin::LATIN:
-	os << "латинское\n";
-	break;
-    case Element::Origin::INDIA:
-	os << "индийское\n";
-	break;
-    case Element::Origin::UNDEFINED:
-    default:
-	os << "-\n";
-	break;
-    }
-    os << "агрегатное состояние:\t";
-    switch (el.phase)
-    {
-    case Element::PHASE::GAS:
-	os << "газообразное\n";
-	break;
-    case Element::PHASE::LIQUID:
-	os << "жидкое\n";
-	break;
-    case Element::PHASE::SOLID:
-	os << "твердое\n";
-	break;
-    case Element::PHASE::UNDEFINED:
-    default:
-	os << "-\n";
-	break;
-    }
-
-    os << "удельная теплоемкость:\t";
-    el.density == nullptr ? os << "-" : os << *el.density;
-    os << "\n";
-    os << "температура плавления:\t";
-    el.melting_point == nullptr ? os << "-" : os << *el.melting_point;
-    os << "\n";
-    os << "температура кипения:\t";
-    el.boiling_point == nullptr ? os << "-" : os << *el.boiling_point;
-    os << "\n";
-    os << "удельная теплоемкость:\t";
-    el.specific_heat_capacity == nullptr ? os << "-" : os << *el.specific_heat_capacity;
-    os << "\n";
-    os << "электронегативность:\t";
-    el.electronegativity == nullptr ? os << "-" : os << *el.electronegativity;
-    os << "\n";
-    return os;
-}
+//ostream& operator<<(ostream& os, Element& el)
+//{
+//    os << "название элемента:\t" << el.name << "\n";
+//    os << "символ элемента:\t" << el.symbol << "\n";
+//    os << "группа:\t\t\t" << el.group << "\n";
+//    os << "период:\t\t\t" << el.period << "\n";
+//    os << "относит. атомная масса:\t" << el.atomic_weight << "\n";
+//    os << "порядковый номер:\t" << el.atomic_number << "\n";
+//    os << "количество нейтронов:\t" << el.neutrons_number << "\n";
+//    os << "происхождение названия:\t";
+//    switch (el.name_origin)
+//    {
+//    case Element::Origin::GREEK:
+//	os << "греческое\n";
+//	break;
+//    case Element::Origin::LATIN:
+//	os << "латинское\n";
+//	break;
+//    case Element::Origin::INDIA:
+//	os << "индийское\n";
+//	break;
+//    case Element::Origin::UNDEFINED:
+//    default:
+//	os << "-\n";
+//	break;
+//    }
+//    os << "агрегатное состояние:\t";
+//    switch (el.phase)
+//    {
+//    case Element::PHASE::GAS:
+//	os << "газообразное\n";
+//	break;
+//    case Element::PHASE::LIQUID:
+//	os << "жидкое\n";
+//	break;
+//    case Element::PHASE::SOLID:
+//	os << "твердое\n";
+//	break;
+//    case Element::PHASE::UNDEFINED:
+//    default:
+//	os << "-\n";
+//	break;
+//    }
+//
+//    os << "удельная теплоемкость:\t";
+//    el.density == nullptr ? os << "-" : os << *el.density;
+//    os << "\n";
+//    os << "температура плавления:\t";
+//    el.melting_point == nullptr ? os << "-" : os << *el.melting_point;
+//    os << "\n";
+//    os << "температура кипения:\t";
+//    el.boiling_point == nullptr ? os << "-" : os << *el.boiling_point;
+//    os << "\n";
+//    os << "удельная теплоемкость:\t";
+//    el.specific_heat_capacity == nullptr ? os << "-" : os << *el.specific_heat_capacity;
+//    os << "\n";
+//    os << "электронегативность:\t";
+//    el.electronegativity == nullptr ? os << "-" : os << *el.electronegativity;
+//    os << "\n";
+//    return os;
+//}
 Element::Element(string name, string symbol, unsigned short group, unsigned short period, float atomic_weight, size_t atomic_number, size_t neutrons_number, Origin name_origin, PHASE phase, const float* density, const  float* melting_point, const  float* boiling_point, const  float* specific_heat_capacity, const float* electronegativity)
 {
     ++Element::count;
@@ -129,7 +129,7 @@ Element::~Element() // деструктор уже прописан
 }
 void Element::printElement()
 {
-    cout << *this << "\n";
+    cout << static_cast<string> (*this) << "\n";
 }
 void Element::boilElement()
 {
@@ -210,7 +210,7 @@ Element* Element::loadElement(ifstream& reader)
 	phase = Element::PHASE::UNDEFINED;
     
    Element* el = new Element(name, symbol, group, period, atomic_weight, atomic_number, atomic_number, name_origin, phase, density, melting_point, boiling_point, specific_heat_capacity, electronegativity);
-   cout << *el;
+   cout << static_cast<string> (*el);
    return el;
 }
 Element** Element::loadElements(string path, size_t& count)
@@ -415,4 +415,77 @@ bool Element::operator<=(const Element& other)
 bool Element::operator>=(const Element& other)
 {
     return this->atomic_number >= other.atomic_number;
+}
+
+Element& Element::operator=(const Element& other)
+{
+    if (*this == other)
+	return *this;
+    ++Element::count;
+    this->atomic_weight = other.atomic_weight;
+    if (density != nullptr)
+	delete density;
+    this->density = new float(*other.density);
+    if (melting_point != nullptr)
+	delete melting_point;
+    this->melting_point = new float(*other.melting_point);
+    if (boiling_point != nullptr)
+	delete boiling_point;
+    this->boiling_point = new float(*other.boiling_point);
+    if (specific_heat_capacity != nullptr)
+	delete specific_heat_capacity;
+    this->specific_heat_capacity = new float(*other.specific_heat_capacity);
+    if (electronegativity != nullptr)
+	delete electronegativity;
+    this->electronegativity = new float(*other.electronegativity);
+    this->atomic_number = other.atomic_number;
+    this->neutrons_number = other.neutrons_number;
+    this->name_origin = other.name_origin;
+    this->phase = other.phase;
+    this->name = other.name;
+    this->group = other.group;
+    this->period = other.period;
+    this->symbol = other.symbol;
+    return *this;
+}
+Element::operator std::string() const
+{
+    string ret =  "название элемента:\t" + name + "\nсимвол элемента:\t" + symbol + "\nгруппа:\t\t\t" + to_string(group) + "\nпериод:\t\t\t" + to_string(period) + "\nотносит. атомная масса:\t" + to_string(atomic_weight) + "\nпорядковый номер:\t" + to_string(atomic_number) + "\nколичество нейтронов:\t" + to_string(neutrons_number) + "\nпроисхождение названия:\t";
+    switch (name_origin)
+    {
+    case Element::Origin::GREEK:
+	ret += "греческое\n";
+	break;
+    case Element::Origin::LATIN:
+	ret += "латинское\n";
+	break;
+    case Element::Origin::INDIA:
+	ret += "индийское\n";
+	break;
+    case Element::Origin::UNDEFINED:
+    default:
+	ret += "-\n";
+	break;
+    }
+    ret += "агрегатное состояние:\t";
+    switch (phase)
+    {
+    case Element::PHASE::GAS:
+	ret += "газообразное\n";
+	break;
+    case Element::PHASE::LIQUID:
+	ret += "жидкое\n";
+	break;
+    case Element::PHASE::SOLID:
+	ret += "твердое\n";
+	break;
+    case Element::PHASE::UNDEFINED:
+    default:
+	ret += "-\n";
+	break;
+    }
+
+    ret += "удельная теплоемкость:\t" + (density == nullptr ? "-" : to_string(*density)) + "\nтемпература плавления:\t" + (melting_point == nullptr ? "-" : to_string(*melting_point)) + "\nтемпература кипения:\t" + (boiling_point == nullptr ? "-" : to_string(*boiling_point)) + "\nудельная теплоемкость:\t" + (specific_heat_capacity == nullptr ? "-" : to_string(*specific_heat_capacity)) + "\nэлектронегативность:\t" + (electronegativity == nullptr ? "-" : to_string(*electronegativity))+"\n";
+
+    return ret;
 }

@@ -42,4 +42,10 @@ int main()
     cout << "\n";
     cout << boolalpha << (n2!= n3);
     cout << "\n";
+
+    cout << "\n\n operator= and operator to_string: \n";
+    Note c = n2;
+    c.set_octave(3);
+    cout << static_cast<string> (c) << "\n";
+    cout << static_cast<string> (n2) << "\n";
 }

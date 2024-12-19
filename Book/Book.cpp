@@ -37,23 +37,23 @@ void Book::PrintBook()
     if(store_ind != nullptr)
 	cout << "store where you can find the book: " << *store_ind << "\n";
 }
-ostream& operator<<(ostream& os, Book b)
-{
-    os << "\n*************\n";
-    os << "name:\t\t" << b.name << "\n";
-    os << "author:\t\t" << b.author << "\n";
-    os << "publish_year:\t" << b.publish_year << "\n";
-    os << "publisher:\t" << b.publisher << "\n";
-    os << "genre:\t\t" << b.genre << "\n";
-    os << "plot:\t\t" << b.plot << "\n";
-    os << "language:\t" << b.language << "\n";
-    os << "number_pages:\t" << b.number_pages << "\n";
-    os << "print_run:\t" << b.print_run << "\n";
-    os << "avaliable count: " << b.count << "\n";
-    if (b.store_ind != nullptr)
-	os << "store where you can find the book: " << *b.store_ind << "\n";
-    return os;
-}
+//ostream& operator<<(ostream& os, Book b)
+//{
+//    os << "\n*************\n";
+//    os << "name:\t\t" << b.name << "\n";
+//    os << "author:\t\t" << b.author << "\n";
+//    os << "publish_year:\t" << b.publish_year << "\n";
+//    os << "publisher:\t" << b.publisher << "\n";
+//    os << "genre:\t\t" << b.genre << "\n";
+//    os << "plot:\t\t" << b.plot << "\n";
+//    os << "language:\t" << b.language << "\n";
+//    os << "number_pages:\t" << b.number_pages << "\n";
+//    os << "print_run:\t" << b.print_run << "\n";
+//    os << "avaliable count: " << b.count << "\n";
+//    if (b.store_ind != nullptr)
+//	os << "store where you can find the book: " << *b.store_ind << "\n";
+//    return os;
+//}
 
 void Book::RunBookOut(int count)
 {
@@ -264,4 +264,14 @@ bool Book::operator<=(const Book& other)
 bool Book::operator>=(const Book& other)
 {
     return this->count >= other.count;
+}
+
+Book::operator std::string() const {
+    string ret = "name:\t\t" + name + "\n"+
+   "author:\t\t" + author + "\n"+"publish_year:\t" + to_string(publish_year) + "\n" + "publisher:\t" + publisher + "\n"+ "genre:\t\t" +genre + "\n"+ "plot:\t\t" + plot+ "\n"
+   + "language:\t" + language+ "\n"+"number_pages:\t"+ std::to_string( number_pages) + "\n"
+   + "print_run:\t" + std::to_string( print_run)+ "\n"+"avaliable count: " + std::to_string(count) + "\n";
+    if (store_ind != nullptr)
+	ret+=  "store where you can find the book: " +to_string( *store_ind) + "\n";
+    return ret; 
 }
