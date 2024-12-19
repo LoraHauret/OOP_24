@@ -25,17 +25,17 @@ int main()
     cin.get();
     system("cls");
 
-    size_t store1 = 1;
+    int store1 = 1;
 
     Book b;
-    b.set_store(&store1);
+    b.set_store(store1);
     b.PrintBook();
     string n = "Mistery of Dragon's life";
     string auth = "Charlz Cooper";
     string p = "Mistic & Co";
     string g = "fantasy";
     string l = "english";
-    Book b1(n, auth, 2024, p, g, "underfined", l, 100, 1);
+    Book b1(n, auth, 2024, p, g, "underfined", l, 100, 1, 1);
     b1.PrintBook();
     b1.RunBookOut(100);
     b1.PrintBook();

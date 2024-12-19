@@ -1,4 +1,5 @@
 ﻿#include "Stitch.h"
+int Stitch::count_all_stitches = 0;
 
 Stitch::Stitch(string en, string ru, string path, Type t, Application app, string description, string impl_tech, Stitch::SHERE shere)
 {
@@ -10,9 +11,45 @@ Stitch::Stitch(string en, string ru, string path, Type t, Application app, strin
     set_description(description);
     set_implementation_technique (impl_tech);
     set_shere(shere);
+    fillCommands();
+    ++count_all_stitches;
 }
-Stitch::~Stitch() // уже написала
+
+Stitch::Stitch(const Stitch& other)
 {
+    set_name_en(other.name_en);
+    set_name_ru(other.name_ru);
+    set_img_path(other.img_path);
+    set_type(other.type);
+    set_zone_appl(other.zone_appl);
+    set_description(other.description);
+    set_implementation_technique(other.implementation_technique);
+    set_shere(other.shere);
+    set_start_pos(other.start_pos.X, other.start_pos.Y);
+    fillCommands();
+    ++count_all_stitches;
+}
+Stitch::Stitch(Stitch&& other)
+{
+    set_name_en(other.name_en);
+    set_name_ru(other.name_ru);
+    set_img_path(other.img_path);
+    set_type(other.type);
+    set_zone_appl(other.zone_appl);
+    set_description(other.description);
+    set_implementation_technique(other.implementation_technique);
+    set_shere(other.shere);
+    for (int i = 0; i < other.commands.size(); i++)
+    {
+	this->commands.push_back(other.commands[i]);
+	delete other.commands[i];
+	other.commands[i] = nullptr;
+    }
+    other.commands.clear();
+}
+Stitch::~Stitch() 
+{
+    --count_all_stitches;
     if (!commands.empty())
     {
 	if (commands.size() > 0)
@@ -25,6 +62,11 @@ Stitch::~Stitch() // уже написала
 	    commands.clear();
 	}
     }
+}
+void Stitch::set_start_pos(int x, int y)
+{
+    this->start_pos.X = x;
+    this->start_pos.Y = y;
 }
 //void Stitch::drawStitch()
 //{
@@ -50,15 +92,28 @@ void Stitch::moveStitch(int val)
     this->start_pos.X += val;
     this->start_pos.Y += val;
 }
+void Stitch::fillCommands()
+{
+    if (!img_path.empty())
+    {
+	string text = drawingSvg::GetAllText(img_path);
+	regex com_regex("-?\\d*\\.\\d+|-?\\d+"); // Все варианты числа типа дабл
+	string commands_line = "MLCSQTAZHVmlcsqtazhv";
+	vector<string> command_strings = drawingSvg::GetStringLines(text, commands_line);
+	vector<CMD> cmds = drawingSvg::GetCommands(command_strings, com_regex);
+	commands = drawingSvg::GetCommands(cmds);
+	drawingSvg::RecountCoord(commands);
+    }
+}
 void Stitch::drawStitch(HDC hdc, float scale)
 {
-    string text = drawingSvg::GetAllText(img_path);
-    regex com_regex("-?\\d*\\.\\d+|-?\\d+"); // Все варианты числа типа дабл
-    string commands_line = "MLCSQTAZHVmlcsqtazhv";
-    vector<string> command_strings = drawingSvg::GetStringLines(text, commands_line);
-    vector<CMD> cmds = drawingSvg::GetCommands(command_strings, com_regex);
-    commands = drawingSvg::GetCommands(cmds);
-    drawingSvg::RecountCoord(commands);
+    //string text = drawingSvg::GetAllText(img_path);
+    //regex com_regex("-?\\d*\\.\\d+|-?\\d+"); // Все варианты числа типа дабл
+    //string commands_line = "MLCSQTAZHVmlcsqtazhv";
+    //vector<string> command_strings = drawingSvg::GetStringLines(text, commands_line);
+    //vector<CMD> cmds = drawingSvg::GetCommands(command_strings, com_regex);
+    //commands = drawingSvg::GetCommands(cmds);
+    //drawingSvg::RecountCoord(commands);
     drawingSvg::DrawSVG(hdc, commands, scale, start_pos.X, start_pos.Y);
 }
 void Stitch::printStitchInfo()

@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "ChemicalElement.h"
 
+int Element::count = 0;
+
 ostream& operator<<(ostream& os, Element& el)
 {
     os << "название элемента:\t" << el.name << "\n";
@@ -64,6 +66,7 @@ ostream& operator<<(ostream& os, Element& el)
 }
 Element::Element(string name, string symbol, unsigned short group, unsigned short period, float atomic_weight, size_t atomic_number, size_t neutrons_number, Origin name_origin, PHASE phase, const float* density, const  float* melting_point, const  float* boiling_point, const  float* specific_heat_capacity, const float* electronegativity)
 {
+    ++Element::count;
     set_name(name);
     set_symbol(symbol);
     set_group(group);
@@ -97,7 +100,7 @@ Element::Element(string name, string symbol, unsigned short group, unsigned shor
 
 Element::~Element() // деструктор уже прописан
 {
-    
+    --Element::count;
     if (density != nullptr)
     {
 	delete density;
@@ -344,4 +347,47 @@ void Element::set_period(const unsigned short& val)
 void Element::set_symbol(const string& val)
 {
     this->symbol = val;
+}
+
+Element::Element(const Element& other)
+{
+    ++Element::count;
+    this->atomic_weight = other.atomic_weight;         
+    this->density = new float(*other.density);                
+    this->melting_point = new float(*other.melting_point);        
+    this->boiling_point = new float(*other.boiling_point);         
+    this->specific_heat_capacity  = new float(*other.specific_heat_capacity);
+    this->electronegativity = new float(*other.electronegativity);
+    this->atomic_number = other.atomic_number;        
+    this->neutrons_number = other.neutrons_number;       
+    this->name_origin = other.name_origin;            
+    this->phase = other.phase;                   
+    this->name = other.name;                   
+    this->group = other.group;          
+    this->period = other.period;         
+    this->symbol = other.symbol;
+}
+
+Element::Element(Element&& other) noexcept
+{
+    this->atomic_weight = other.atomic_weight;
+    this->density = other.density;
+    this->melting_point = other.melting_point;
+    this->boiling_point = other.boiling_point;
+    this->specific_heat_capacity = other.specific_heat_capacity;
+    this->electronegativity = other.electronegativity;
+    this->atomic_number = other.atomic_number;
+    this->neutrons_number = other.neutrons_number;
+    this->name_origin = other.name_origin;
+    this->phase = other.phase;
+    this->name = other.name;
+    this->group = other.group;
+    this->period = other.period;
+    this->symbol = other.symbol;
+
+    other.density = nullptr;
+    other.melting_point = nullptr;
+    other.boiling_point = nullptr;
+    other.specific_heat_capacity = nullptr;
+    other.electronegativity = nullptr;
 }

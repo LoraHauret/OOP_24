@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <iostream>
 #include <string.h>
 #include <string>
@@ -16,6 +16,8 @@ public:
     enum class PHASE { UNDEFINED = 0, GAS, SOLID, LIQUID };
 
     Element(string, string, unsigned short, unsigned short, float, size_t, size_t, Origin, PHASE, const  float* = nullptr, const  float* = nullptr, const  float*  = nullptr, const  float*  = nullptr, const  float*  = nullptr);
+    Element(const Element& other);
+    Element(Element&& other) noexcept;
     ~Element();
     // demo functions:
     void printElement();
@@ -28,21 +30,21 @@ public:
 private:
     Element();
     //block
-    float atomic_weight;          // относительная атомная масса
-    float* density = nullptr;                // плотность
-    float* melting_point = nullptr;          // температура плавления
-    float* boiling_point = nullptr;          // температура кипения
-    float* specific_heat_capacity = nullptr; // удельная теплоемкость
-    float* electronegativity = nullptr;       // электронегативность
-    size_t atomic_number;          // порядковый номер элемента и количество протонов
-    size_t neutrons_number;        // количество нейтронов, если отличается от стандарта, то изотоп
-    Origin name_origin;            // происхождение названия
-    PHASE phase;                   // агрегатное состояние
-    string name;                   // название элемента
-    unsigned short group;          //  группа
-    unsigned short period;         // период
-    string symbol;                 // символ элемента
-    
+    float atomic_weight;          // РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅР°СЏ Р°С‚РѕРјРЅР°СЏ РјР°СЃСЃР°
+    float* density = nullptr;                // РїР»РѕС‚РЅРѕСЃС‚СЊ
+    float* melting_point = nullptr;          // С‚РµРјРїРµСЂР°С‚СѓСЂР° РїР»Р°РІР»РµРЅРёСЏ
+    float* boiling_point = nullptr;          // С‚РµРјРїРµСЂР°С‚СѓСЂР° РєРёРїРµРЅРёСЏ
+    float* specific_heat_capacity = nullptr; // СѓРґРµР»СЊРЅР°СЏ С‚РµРїР»РѕРµРјРєРѕСЃС‚СЊ
+    float* electronegativity = nullptr;       // СЌР»РµРєС‚СЂРѕРЅРµРіР°С‚РёРІРЅРѕСЃС‚СЊ
+    size_t atomic_number;          // РїРѕСЂСЏРґРєРѕРІС‹Р№ РЅРѕРјРµСЂ СЌР»РµРјРµРЅС‚Р° Рё РєРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРѕС‚РѕРЅРѕРІ
+    size_t neutrons_number;        // РєРѕР»РёС‡РµСЃС‚РІРѕ РЅРµР№С‚СЂРѕРЅРѕРІ, РµСЃР»Рё РѕС‚Р»РёС‡Р°РµС‚СЃСЏ РѕС‚ СЃС‚Р°РЅРґР°СЂС‚Р°, С‚Рѕ РёР·РѕС‚РѕРї
+    Origin name_origin;            // РїСЂРѕРёСЃС…РѕР¶РґРµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ
+    PHASE phase;                   // Р°РіСЂРµРіР°С‚РЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ
+    string name;                   // РЅР°Р·РІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р°
+    unsigned short group;          //  РіСЂСѓРїРїР°
+    unsigned short period;         // РїРµСЂРёРѕРґ
+    string symbol;                 // СЃРёРјРІРѕР» СЌР»РµРјРµРЅС‚Р°
+    static int count;
 public:
     const float& get_atomic_weight();
     const float& get_density();
@@ -58,7 +60,10 @@ public:
      const  unsigned short& get_group();
      const unsigned short& get_period();
      const string& get_symbol();
-
+     const int& get_count_elements()
+     {
+	 return Element::count;
+     }
 //private:
      void set_atomic_weight(const float& = 0);
      void set_density(const float& = 0);

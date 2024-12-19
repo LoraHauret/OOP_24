@@ -30,8 +30,12 @@ private:
     COORD start_pos{ 0,0 };
     SHERE shere = ONE;
     vector<Figure*> commands{};
+    static int count_all_stitches;
+    void fillCommands();
 public:
     Stitch(string en, string ru, string path, Type t = Stitch::Type::BASIC, Application app = Stitch::Application::CROCHETING, string description = "описание", string impl_tech = "техника выполнения", Stitch::SHERE share = ONE);
+    Stitch(const Stitch& other);
+    Stitch(Stitch&& other);
     ~Stitch();
     // demo functions:
     //void drawStitch();
@@ -51,6 +55,10 @@ public:
     const string& get_implementation_technique();
     const COORD& get_start_pos();
     const SHERE get_shere();
+    int get_allstitches_count()
+    {
+	return count_all_stitches;
+    }
 
     void set_name_en(const string&);
     void set_name_ru(const string&);
@@ -61,7 +69,7 @@ public:
     void set_implementation_technique(const string&);
     void set_start_pos(const COORD&);
     void set_shere(Stitch::SHERE);
-
+    void set_start_pos(int x, int y);
 
     friend ostream& operator<<(ostream& os, Stitch s);
 };

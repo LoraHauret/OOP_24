@@ -1,12 +1,13 @@
 #pragma once
 #include "Book.h"
 
-
+int Book::count_stores_books = 0;
 
 Book::Book() :Book("no name", "no author", 0, "no publisher", "no genre", "no plot", "no language", 0, 0) {}
 
-Book::Book(string name, string author, size_t publish_year, string publisher = "unknown", string genre = "not known", string plot = "not known", string language = "undefined", size_t number_pages = 0, size_t print_run = 1)
+Book::Book(string name, string author, size_t publish_year, string publisher = "unknown", string genre = "not known", string plot = "not known", string language = "undefined", size_t number_pages = 0, size_t print_run = 1, int store_ind)
 {
+    ++count_stores_books;
     set_name(name);
     set_author(author);
     set_publish_year(publish_year);
@@ -17,6 +18,7 @@ Book::Book(string name, string author, size_t publish_year, string publisher = "
     set_number_pages(number_pages);
     set_print_run(print_run);
     set_count(print_run);
+    this->store_ind = new int(store_ind);
 }
 
 void Book::PrintBook()
@@ -168,15 +170,47 @@ void Book::set_count(const size_t& val)
     this->count = val;
 }
 
-void Book::set_store(size_t* store_ind)
+void Book::set_store(int store_ind)
 {    
-   this->store_ind = new size_t(*store_ind);
+   this->store_ind = new int(store_ind);
 }
 Book::~Book()
 {
+    --count_stores_books;
     if (this->store_ind != nullptr)
     {
 	delete store_ind;
 	store_ind = nullptr;
     }
+}
+
+Book::Book(const Book& other)
+{
+    ++count_stores_books;
+    set_name(name);
+    set_author(author);
+    set_publish_year(publish_year);
+    set_publisher(publisher);
+    set_genre(genre);
+    set_plot(plot);
+    set_language(language);
+    set_number_pages(number_pages);
+    set_print_run(print_run);
+    set_count(print_run);
+    this->store_ind = new int(*other.store_ind);
+}
+Book::Book(Book&& other)
+{    
+    set_name(name);
+    set_author(author);
+    set_publish_year(publish_year);
+    set_publisher(publisher);
+    set_genre(genre);
+    set_plot(plot);
+    set_language(language);
+    set_number_pages(number_pages);
+    set_print_run(print_run);
+    set_count(print_run);
+    this->store_ind = other.store_ind;
+    other.store_ind = nullptr;
 }
