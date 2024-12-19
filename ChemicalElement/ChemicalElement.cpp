@@ -62,22 +62,37 @@ ostream& operator<<(ostream& os, Element& el)
     os << "\n";
     return os;
 }
-Element::Element(string name, string symbol, unsigned short group, unsigned short period, float atomic_weight, size_t atomic_number, size_t neutrons_number, Origin name_origin, PHASE phase, float* density, float* melting_point, float* boiling_point, float* specific_heat_capacity, float* electronegativity)
+Element::Element(string name, string symbol, unsigned short group, unsigned short period, float atomic_weight, size_t atomic_number, size_t neutrons_number, Origin name_origin, PHASE phase, const float* density, const  float* melting_point, const  float* boiling_point, const  float* specific_heat_capacity, const float* electronegativity)
 {
-    this->name = name;
-    this->symbol = symbol;
-    this->group = group;
-    this->period = period;
-    this->atomic_weight = atomic_weight;
-    this->atomic_number = atomic_number;
-    this->neutrons_number = neutrons_number;
-    this->name_origin = name_origin;
-    this->phase = phase;
-    this->density = density;
-    this->melting_point = melting_point;
-    this->boiling_point = boiling_point;
-    this->specific_heat_capacity = specific_heat_capacity;
-    this->electronegativity = electronegativity;
+    set_name(name);
+    set_symbol(symbol);
+    set_group(group);
+    set_period(period);
+    set_atomic_weight(atomic_weight);
+    set_atomic_number(atomic_number);
+    set_neutrons_number(neutrons_number);
+    set_name_origin(name_origin);
+    set_phase(phase);
+    if (density != nullptr)
+	set_density(*density);
+    else
+	set_density(0);
+    if (melting_point != nullptr)
+	set_melting_point(*melting_point);
+    else
+	set_melting_point(0);
+   if(boiling_point != nullptr)
+     set_boiling_point(*boiling_point);
+   else
+       set_boiling_point(0);
+   if(specific_heat_capacity !=0)
+	set_specific_heat_capacity(*specific_heat_capacity);
+   else 
+       set_specific_heat_capacity(0);
+   if(electronegativity !=0)
+       set_electronegativity(*electronegativity);
+   else
+       set_electronegativity(0);
 }
 
 Element::~Element()
@@ -161,23 +176,23 @@ Element* Element::loadElement(ifstream& reader)
     reader >> group >> period >> atomic_weight;
 
     reader >> temp;
-    if (temp != "underfined")
+    if (temp != "undefined")
 	density = new float(std::stof(temp));
 
     reader >> temp;
-    if (temp != "underfined")
+    if (temp != "undefined")
 	melting_point = new float(std::stof(temp));
 
     reader >> temp;
-    if (temp != "underfined")
+    if (temp != "undefined")
 	boiling_point = new float(std::stof(temp));
 
     reader >> temp;
-    if (temp != "underfined")
+    if (temp != "undefined")
 	specific_heat_capacity = new float(std::stof(temp));
 
     reader >> temp;
-    if (temp != "underfined")
+    if (temp != "undefined")
 	electronegativity = new float(std::stof(temp));
 
     reader >> temp;
@@ -189,8 +204,10 @@ Element* Element::loadElement(ifstream& reader)
 	phase = Element::PHASE::LIQUID;
     else
 	phase = Element::PHASE::UNDEFINED;
-
-    return new Element(name, symbol, group, period, atomic_weight, atomic_number, atomic_number, name_origin, phase, density, melting_point, boiling_point, specific_heat_capacity, electronegativity);
+    
+   Element* el = new Element(name, symbol, group, period, atomic_weight, atomic_number, atomic_number, name_origin, phase, density, melting_point, boiling_point, specific_heat_capacity, electronegativity);
+   cout << *el;
+   return el;
 }
 Element** Element::loadElements(string path, size_t& count)
 {
@@ -277,29 +294,29 @@ void Element::set_atomic_weight(const float& val)
 }
 void Element::set_density(const float& val)
 {
-    *(this->density) = val;
+    this->density = new float(val);
 }
 void Element::set_melting_point(const float& val)
 {
-    *(this->melting_point) = val;
+    this->melting_point = new float(val);
 }
-void Element::set_boiling_point(const float& val)
-{
-    *(this->boiling_point) = val;
+void Element::set_boiling_point(const float& val )
+{ 
+        this->boiling_point = new float(val);
 }
 void Element::set_specific_heat_capacity(const float& val)
 {
-    *(this->specific_heat_capacity) = val;
+	this->specific_heat_capacity = new float( val);
 }
 void Element::set_electronegativity(const float& val)
 {
-    *(this->electronegativity) = val;
+	this->electronegativity = new float(val);
 }
-void Element::set_atomic_number(const size_t& val)
+void Element::set_atomic_number(const size_t& val = 0)
 {
     this->atomic_number = val;
 }
-void Element::set_neutrons_number(const size_t& val)
+void Element::set_neutrons_number(const size_t& val = 0)
 {
     this->neutrons_number = val;
 }

@@ -7,16 +7,16 @@ Book::Book() :Book("no name", "no author", 0, "no publisher", "no genre", "no pl
 
 Book::Book(string name, string author, size_t publish_year, string publisher = "unknown", string genre = "not known", string plot = "not known", string language = "undefined", size_t number_pages = 0, size_t print_run = 1)
 {
-    this->name = name;
-    this->author = author;
-    this->publish_year = publish_year;
-    this->publisher = publisher;
-    this->genre = genre;
-    this->plot = plot;
-    this->language = language;
-    this->number_pages = number_pages;
-    this->print_run = print_run;
-    this->count = print_run;
+    set_name(name);
+    set_author(author);
+    set_publish_year(publish_year);
+    set_publisher(publisher);
+    set_genre(genre);
+    set_plot(plot);
+    set_language(language);
+    set_number_pages(number_pages);
+    set_print_run(print_run);
+    set_count(print_run);
 }
 
 void Book::PrintBook()

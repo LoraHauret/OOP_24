@@ -1,6 +1,13 @@
 ﻿#pragma once
-#include <iostream>
-#include <windows.h>
+//#include <iostream>
+//#include <windows.h>
+#include "Figure.h"
+#include "Command.h"
+#include "Line.h"
+#include "CubicBezier.h"
+#include "QuadraticBezier.h"
+#include "ArcF.h"
+#include "drawingSVG.h"
 
 using namespace std;
 
@@ -11,6 +18,7 @@ private:
 public:
     enum Type { BASIC = 1, DECORATIVE, RELIEF, OPENWORK };	     // основная, декоративная, рельефная, ажурная
     enum Application { KNITTING = 1, CROCHETING };		     // вязание на спицах, вязание крючком
+    enum SHERE{ONE=30, TWO=60, THREE=90, FOUR=120, FIVE=150};
 private:
     string name_en;						     // название петли на английском
     string name_ru;						     // название петли на русском
@@ -20,12 +28,14 @@ private:
     string description;					             // описание петли
     string implementation_technique;			             // инструкция по выполнению петли
     COORD start_pos{ 0,0 };
-
+    SHERE shere = ONE;
+    vector<Figure*> commands{};
 public:
-    Stitch(string en, string ru, string path, Type t = Stitch::Type::BASIC, Application app = Stitch::Application::CROCHETING, string description = "описание", string impl_tech = "техника выполнения");
+    Stitch(string en, string ru, string path, Type t = Stitch::Type::BASIC, Application app = Stitch::Application::CROCHETING, string description = "описание", string impl_tech = "техника выполнения", Stitch::SHERE share = ONE);
+    ~Stitch();
     // demo functions:
-    void drawStitch();
-    //void drawStitch(HDC hdc);
+    //void drawStitch();
+    void drawStitch(HDC hdc, float scale = 1);
     void printStitchInfo();
     void moveStitch(int);
     void moveStitch(int, int);
@@ -40,6 +50,7 @@ public:
     const string& get_description();
     const string& get_implementation_technique();
     const COORD& get_start_pos();
+    const SHERE get_shere();
 
     void set_name_en(const string&);
     void set_name_ru(const string&);
@@ -49,6 +60,7 @@ public:
     void set_description(const string&);
     void set_implementation_technique(const string&);
     void set_start_pos(const COORD&);
+    void set_shere(Stitch::SHERE);
 
 
     friend ostream& operator<<(ostream& os, Stitch s);

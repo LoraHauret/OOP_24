@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="424.039mm" height="247.65mm"
+ viewBox="0 0 1202 702"
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  version="1.2" baseProfile="tiny">
+<title>_q</title>
+<desc>Generated with Qt</desc>
+<defs>
+</defs>
+<g fill="none" stroke="black" stroke-width="1" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" >
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="MS Shell Dlg 2" font-size="8.25" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family="MS Shell Dlg 2" font-size="8.25" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="nonzero" d="M577,701 L625,701 L1121,41 L1073,41 L577,701 M1003,41 L1190,41 C1197,41 1201,29 1201,18 C1201,9 1199,1 1193,1 L1003,1 C997,1 994,11 994,21 C994,31 997,41 1003,41 M680,41 L867,41 C874,41 878,29 878,18 C878,9 875,1 869,1 L680,1 C674,1 670,11 670,21 C670,31 674,41 680,41 M577,701 L625,701 L800,41 L752,41 L577,701 M625,701 L129,41 L81,41 L577,701 L625,701 M199,41 C205,41 208,31 208,21 C208,11 205,1 199,1 L9,1 C3,1 1,9 1,18 C1,29 5,41 12,41 L199,41 M542,41 C548,41 552,31 552,21 C552,11 548,1 542,1 L353,1 C347,1 345,9 345,18 C345,29 348,41 355,41 L542,41 M625,701 L470,41 L423,41 L577,701 L625,701 M802,302 L813,276 L638,216 L627,241 L802,302 M1030,298 L1041,272 L866,212 L855,237 L1030,298 M585,302 L596,276 L421,216 L411,241 L585,302 M341,302 L352,276 L177,216 L166,241 L341,302"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="MS Shell Dlg 2" font-size="8.25" font-weight="400" font-style="normal" 
+>
+</g>
+</g>
+</svg>

@@ -1,20 +1,30 @@
-﻿#pragma once
-#include "Stitch.h"
+﻿#include "Stitch.h"
 
-Stitch::Stitch(string en, string ru, string path, Type t, Application app, string description, string impl_tech)
+Stitch::Stitch(string en, string ru, string path, Type t, Application app, string description, string impl_tech, Stitch::SHERE shere)
 {
-    this->name_en = en;
-    this->name_ru = ru;
-    this->img_path = path;
-    this->type = t;
-    this->zone_appl = app;
-    this->description = description;
-    this->implementation_technique = impl_tech;
+    set_name_en (en);
+    set_name_ru(ru);
+    set_img_path (path);
+    set_type(t);
+    set_zone_appl(app);
+    set_description(description);
+    set_implementation_technique (impl_tech);
+    set_shere(shere);
 }
-void Stitch::drawStitch()
+Stitch::~Stitch()
 {
-    cout << "The stitch is drawing using the picture path \""<<this->img_path<<"\"...\n";
+    if (!commands.empty())
+    {
+	for (int i = 0; i < commands.size(); i++)
+	    delete commands[i];
+	commands.clear();
+    }
 }
+//void Stitch::drawStitch()
+//{
+//    cout << "The stitch is drawing using the picture path \"" 
+//<< this->img_path << "\"...\n";
+//}
 
 void Stitch::moveStitchX(int h)
 {
@@ -24,23 +34,30 @@ void Stitch::moveStitchY(int v)
 {
     moveStitch(0, v);
 }
-void Stitch::moveStitch(int h, int v)
+void Stitch::moveStitch(int hpos, int vpos)
 {
-    this->start_pos.X += h;
-    this->start_pos.Y += v;
+    this->start_pos.X += hpos;
+    this->start_pos.Y += vpos;
 }
 void Stitch::moveStitch(int val)
 {
     this->start_pos.X += val;
     this->start_pos.Y += val;
 }
-//void Stitch::drawStitch(HDC hdc)
-//{
-//
-//}
+void Stitch::drawStitch(HDC hdc, float scale)
+{
+    string text = drawingSvg::GetAllText(img_path);
+    regex com_regex("-?\\d*\\.\\d+|-?\\d+"); // Все варианты числа типа дабл
+    string commands_line = "MLCSQTAZHVmlcsqtazhv";
+    vector<string> command_strings = drawingSvg::GetStringLines(text, commands_line);
+    vector<CMD> cmds = drawingSvg::GetCommands(command_strings, com_regex);
+    commands = drawingSvg::GetCommands(cmds);
+    drawingSvg::RecountCoord(commands);
+    drawingSvg::DrawSVG(hdc, commands, scale, start_pos.X, start_pos.Y);
+}
 void Stitch::printStitchInfo()
 {
-    cout << *this<<"\n";
+    cout << *this << "\n";
 }
 
 ostream& operator<<(ostream& os, Stitch::Application appl)
@@ -86,12 +103,12 @@ ostream& operator<<(ostream& os, Stitch s)
 {
     os << "Английское название:\t" << s.name_en << "\n";
     os << "Русское название:\t" << s.name_ru << "\n";
-    os<<"Путь к файлу:\t\t"<< s.img_path << "\n";
-    os << "Тип:\t\t\t"<< s.type;	
-    os << "Зона применения:\t"<<s.zone_appl;
+    os << "Путь к файлу:\t\t" << s.img_path << "\n";
+    os << "Тип:\t\t\t" << s.type;
+    os << "Зона применения:\t" << s.zone_appl;
     os << "Описание:\t\t" << s.description << "\n";
     os << "Техника выполнения:\t" << s.implementation_technique << "\n";
-    os << "Начальные координаты:\t{" << s.start_pos.X << ", "<<s.start_pos.Y << "}\n";
+    os << "Начальные координаты:\t{" << s.start_pos.X << ", " << s.start_pos.Y << "}\n";
     return os;
 }
 
@@ -127,7 +144,10 @@ const COORD& Stitch::get_start_pos()
 {
     return start_pos;
 }
-
+const Stitch::SHERE Stitch::get_shere()
+{
+    return this->shere;
+}
 void Stitch::set_name_en(const string& val)
 {
     name_en = val;
@@ -168,4 +188,7 @@ void Stitch::set_start_pos(const COORD& val)
     start_pos = val;
 }
 
-
+void Stitch::set_shere(SHERE shere)
+{
+    this->shere = shere;
+}

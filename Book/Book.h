@@ -1,5 +1,12 @@
 #pragma once
 #include <iostream>
+#include "Figure.h"
+//#include "Command.h"
+//#include "Line.h"
+//#include "CubicBezier.h"x
+//#include "QuadraticBezier.h"
+//#include "ArcF.h"
+#include "drawingSVG.h"
 using namespace std;
 
 class Book {

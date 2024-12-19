@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="106.539mm" height="106.539mm"
+ viewBox="0 0 302 302"
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  version="1.2" baseProfile="tiny">
+<title>_a</title>
+
+<path vector-effect="none" fill-rule="nonzero" d="M1,150 C1,234 68,301 152,301 C234,301 301,234 301,150 C301,68 234,1 152,1 C68,1 1,68 1,150 M21,150 C21,80 80,21 152,21 C222,21 281,80 281,150 C281,222 222,281 152,281 C80,281 21,222 21,150 "/>
+
+</svg>

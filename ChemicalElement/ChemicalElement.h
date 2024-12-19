@@ -14,7 +14,7 @@ public:
     enum class Origin { UNDEFINED = 0, GREEK, INDIA, PERSIAN, LATIN };
     enum class PHASE { UNDEFINED = 0, GAS, SOLID, LIQUID };
 
-    Element(string, string, unsigned short, unsigned short, float, size_t, size_t, Origin, PHASE, float* = nullptr, float* = nullptr, float*  = nullptr, float*  = nullptr, float*  = nullptr);
+    Element(string, string, unsigned short, unsigned short, float, size_t, size_t, Origin, PHASE, const  float* = nullptr, const  float* = nullptr, const  float*  = nullptr, const  float*  = nullptr, const  float*  = nullptr);
     ~Element();
     // demo functions:
     void printElement();
@@ -59,12 +59,12 @@ public:
      const string& get_symbol();
 
 //private:
-     void set_atomic_weight(const float&);          
-     void set_density(const float&);
-     void set_melting_point(const float&);
-     void set_boiling_point(const float&);
-     void set_specific_heat_capacity(const float&);
-     void set_electronegativity(const float&);
+     void set_atomic_weight(const float& = 0);
+     void set_density(const float& = 0);
+     void set_melting_point(const float& = 0);
+     void set_boiling_point(const float& = 0);
+     void set_specific_heat_capacity(const float& = 0);
+     void set_electronegativity(const float& = 0);
      void set_atomic_number(const size_t&);
      void set_neutrons_number(const size_t&);
      void set_name_origin(const Origin);

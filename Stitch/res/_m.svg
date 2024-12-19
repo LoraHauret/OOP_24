@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="318.206mm" height="247.65mm"
+ viewBox="0 0 902 702"
+ xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  version="1.2" baseProfile="tiny">
+<title>_m</title>
+<desc>Generated with Qt</desc>
+<defs>
+</defs>
+<g fill="none" stroke="black" stroke-width="1" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" >
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="MS Shell Dlg 2" font-size="8.25" font-weight="400" font-style="normal" 
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+font-family="MS Shell Dlg 2" font-size="8.25" font-weight="400" font-style="normal" 
+>
+<path vector-effect="none" fill-rule="nonzero" d="M425,701 L477,701 L477,1 L425,1 L425,701 M349,41 L550,41 C558,41 562,29 562,18 C562,9 559,1 553,1 L349,1 C341,1 339,11 339,21 C339,31 341,41 349,41 M425,701 L477,701 L831,1 L780,1 L425,701 M688,41 L889,41 C897,41 901,29 901,18 C901,9 898,1 892,1 L688,1 C681,1 678,11 678,21 C678,31 681,41 688,41 M477,701 L122,1 L71,1 L425,701 L477,701 M214,41 C220,41 224,31 224,21 C224,11 220,1 214,1 L10,1 C4,1 1,9 1,18 C1,29 5,41 13,41 L214,41"/>
+</g>
+
+<g fill="none" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+font-family="MS Shell Dlg 2" font-size="8.25" font-weight="400" font-style="normal" 
+>
+</g>
+</g>
+</svg>
