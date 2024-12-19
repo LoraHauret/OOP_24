@@ -47,5 +47,7 @@ int main()
     b1.PrintBook();
     cout << b1;
 
-    int* a = new int(8);
+    cout << "\n";
+    cout << boolalpha << (b == b1);
+    cout<< "\n";
 }

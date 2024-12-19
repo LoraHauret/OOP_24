@@ -71,5 +71,11 @@ public:
     void set_shere(Stitch::SHERE);
     void set_start_pos(int x, int y);
 
+    bool operator==(const Stitch& other);
+    bool operator!=(const Stitch& other);
+    bool operator<(const Stitch& other);
+    bool operator>(const Stitch& other);
+    bool operator<=(const Stitch& other);
+    bool operator>=(const Stitch& other);
     friend ostream& operator<<(ostream& os, Stitch s);
 };

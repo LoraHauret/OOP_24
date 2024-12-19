@@ -253,3 +253,28 @@ void Stitch::set_shere(SHERE shere)
 {
     this->shere = shere;
 }
+
+bool Stitch::operator==(const Stitch& other)
+{
+    return this->name_en == other.name_en && this->name_ru == other.name_ru && this->type == other.type && this->zone_appl == other.zone_appl;
+}
+bool Stitch::operator!=(const Stitch& other)
+{
+    return !(*this == other);
+}
+bool Stitch::operator<(const Stitch& other)
+{
+    return this->shere < other.shere;
+}
+bool Stitch::operator>(const Stitch& other)
+{
+    return this->shere > other.shere;
+}
+bool Stitch::operator<=(const Stitch& other)
+{
+    return this->shere <= other.shere;
+}
+bool Stitch::operator>=(const Stitch& other)
+{
+    return this->shere >= other.shere;
+}

@@ -28,6 +28,13 @@ public:
     Book(const Book& other);
     Book(Book&& other);
     ~Book();
+    Book& operator=(const Book& other);
+    bool operator==(const Book& other);
+    bool operator!=(const Book& other);
+    bool operator<(const Book& other);
+    bool operator>(const Book& other);
+    bool operator<=(const Book& other);
+    bool operator>=(const Book& other);
     void PrintBook();	    // распечатать книгу
     void RunBookOut(int);  // издать книгу
     void WritePages(int);  // написать продолжение истории

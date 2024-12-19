@@ -37,4 +37,9 @@ int main()
     }
 
     ReleaseDC(hwnd, hdc);
+
+    cout << boolalpha << (n2 == n3);
+    cout << "\n";
+    cout << boolalpha << (n2!= n3);
+    cout << "\n";
 }

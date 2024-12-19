@@ -391,3 +391,28 @@ Element::Element(Element&& other) noexcept
     other.specific_heat_capacity = nullptr;
     other.electronegativity = nullptr;
 }
+
+bool Element::operator==(const Element& other)
+{
+    return this->atomic_number == other.atomic_number && this->neutrons_number == other.neutrons_number && *this->density == *other.density && *this->melting_point == *other.melting_point && *this->boiling_point == *other.boiling_point && *this->electronegativity == *other.electronegativity;
+}
+bool Element::operator!=(const Element& other)
+{
+    return !(*this == other);
+}
+bool Element::operator<(const  Element& other)
+{
+    return this->atomic_number < other.atomic_number;
+}
+bool Element::operator>(const  Element& other)
+{
+    return this->atomic_number > other.atomic_number;
+}
+bool Element::operator<=(const Element& other)
+{
+    return this->atomic_number <= other.atomic_number;
+}
+bool Element::operator>=(const Element& other)
+{
+    return this->atomic_number >= other.atomic_number;
+}

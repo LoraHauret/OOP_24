@@ -187,16 +187,16 @@ Book::~Book()
 Book::Book(const Book& other)
 {
     ++count_stores_books;
-    set_name(name);
-    set_author(author);
-    set_publish_year(publish_year);
-    set_publisher(publisher);
-    set_genre(genre);
-    set_plot(plot);
-    set_language(language);
-    set_number_pages(number_pages);
-    set_print_run(print_run);
-    set_count(print_run);
+    set_name(other.name);
+    set_author(other.author);
+    set_publish_year(other.publish_year);
+    set_publisher(other.publisher);
+    set_genre(other.genre);
+    set_plot(other.plot);
+    set_language(other.language);
+    set_number_pages(other.number_pages);
+    set_print_run(other.print_run);
+    set_count(other.print_run);
     this->store_ind = new int(*other.store_ind);
 }
 Book::Book(Book&& other)
@@ -213,4 +213,55 @@ Book::Book(Book&& other)
     set_count(print_run);
     this->store_ind = other.store_ind;
     other.store_ind = nullptr;
+}
+
+Book& Book::operator=(const Book& other)
+{
+    if (this == &other)
+	return *this;
+    ++count_stores_books;
+    if (this->store_ind != nullptr)
+    {
+	/*delete store_ind;
+	store_ind = nullptr;*/
+
+	set_name(other.name);
+	set_author(other.author);
+	set_publish_year(other.publish_year);
+	set_publisher(other.publisher);
+	set_genre(other.genre);
+	set_plot(other.plot);
+	set_language(other.language);
+	set_number_pages(other.number_pages);
+	set_print_run(other.print_run);
+	set_count(other.print_run);
+	this->store_ind = other.store_ind;
+    }
+    return *this;
+}
+
+bool Book::operator==(const Book& other)
+{
+    return this->author == other.author && this->name == other.name && this->publisher == other.publisher && this->publish_year == other.publish_year;
+}
+bool Book::operator!=(const Book& other)
+{
+    return !(*this == other);
+
+}
+bool Book::operator<(const Book& other)
+{
+    return this->count < other.count;
+}
+bool Book::operator>(const Book& other)
+{
+    return this->count > other.count;
+}
+bool Book::operator<=(const Book& other)
+{
+    return this->count <= other.count;
+}
+bool Book::operator>=(const Book& other)
+{
+    return this->count >= other.count;
 }

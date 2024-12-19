@@ -80,7 +80,12 @@ public:
      void set_period(const unsigned short&);
      void set_symbol(const string&);
 
-
+     bool operator==(const Element& other);
+     bool operator!=(const Element& other);
+     bool operator<(const  Element& other);
+     bool operator>(const  Element& other);
+     bool operator<=(const Element& other);
+     bool operator>=(const Element& other);
     friend ostream& operator<<(ostream& os, Element&);
 };
 
