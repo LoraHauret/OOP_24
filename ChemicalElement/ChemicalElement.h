@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <fstream>
 #include <stdio.h>
+#include <vector>
 using namespace std;
 
 
@@ -41,7 +42,7 @@ private:
     unsigned short group;          //  группа
     unsigned short period;         // период
     string symbol;                 // символ элемента
-
+    
 public:
     const float& get_atomic_weight();
     const float& get_density();
@@ -77,3 +78,5 @@ public:
 
     friend ostream& operator<<(ostream& os, Element&);
 };
+
+// vector<Element*> elements_set;

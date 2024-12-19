@@ -11,13 +11,19 @@ Stitch::Stitch(string en, string ru, string path, Type t, Application app, strin
     set_implementation_technique (impl_tech);
     set_shere(shere);
 }
-Stitch::~Stitch()
+Stitch::~Stitch() // уже написала
 {
     if (!commands.empty())
     {
-	for (int i = 0; i < commands.size(); i++)
-	    delete commands[i];
-	commands.clear();
+	if (commands.size() > 0)
+	{
+	    for (int i = 0; i < commands.size(); i++)
+	    {
+		delete commands[i];
+		commands[i] = nullptr;
+	    }
+	    commands.clear();
+	}
     }
 }
 //void Stitch::drawStitch()

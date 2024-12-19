@@ -20,10 +20,11 @@ class Book {
     size_t number_pages;
     size_t print_run; // тираж
     size_t count;
-
+    size_t* store_ind = nullptr;
 public:
     Book();
     Book(string, string, size_t, string, string, string, string, size_t, size_t);
+    ~Book();
     void PrintBook();	    // распечатать книгу
     void RunBookOut(int);  // издать книгу
     void WritePages(int);  // написать продолжение истории
@@ -52,6 +53,6 @@ public:
     void set_number_pages(const size_t&);
     void set_print_run(const size_t&);
     void set_count(const size_t&);
-
+    void set_store(size_t*);
     friend ostream& operator<<(ostream& os, Book b);
 };

@@ -95,8 +95,9 @@ Element::Element(string name, string symbol, unsigned short group, unsigned shor
        set_electronegativity(0);
 }
 
-Element::~Element()
+Element::~Element() // деструктор уже прописан
 {
+    
     if (density != nullptr)
     {
 	delete density;

@@ -32,6 +32,8 @@ void Book::PrintBook()
     cout << "number_pages:\t" << number_pages << "\n";
     cout << "print_run:\t" << print_run << "\n";
     cout << "avaliable count: " << count << "\n";
+    if(store_ind != nullptr)
+	cout << "store where you can find the book: " << *store_ind << "\n";
 }
 ostream& operator<<(ostream& os, Book b)
 {
@@ -46,6 +48,8 @@ ostream& operator<<(ostream& os, Book b)
     os << "number_pages:\t" << b.number_pages << "\n";
     os << "print_run:\t" << b.print_run << "\n";
     os << "avaliable count: " << b.count << "\n";
+    if (b.store_ind != nullptr)
+	os << "store where you can find the book: " << *b.store_ind << "\n";
     return os;
 }
 
@@ -162,4 +166,17 @@ void Book::set_print_run(const size_t& val)
 void Book::set_count(const size_t& val)
 {
     this->count = val;
+}
+
+void Book::set_store(size_t* store_ind)
+{    
+   this->store_ind = new size_t(*store_ind);
+}
+Book::~Book()
+{
+    if (this->store_ind != nullptr)
+    {
+	delete store_ind;
+	store_ind = nullptr;
+    }
 }

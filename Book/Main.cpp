@@ -24,8 +24,11 @@ int main()
     cout << "enter any key to continue...";
     cin.get();
     system("cls");
-    Book b;
 
+    size_t store1 = 1;
+
+    Book b;
+    b.set_store(&store1);
     b.PrintBook();
     string n = "Mistery of Dragon's life";
     string auth = "Charlz Cooper";
@@ -43,4 +46,6 @@ int main()
     b1.SellBook(60);
     b1.PrintBook();
     cout << b1;
+
+    int* a = new int(8);
 }

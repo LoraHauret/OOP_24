@@ -18,7 +18,7 @@ int main()
 
     el.freezeElement();
     el.printElement();*/
-    string path = "D:\\c++\\C++_24\\projects_24\\OOP_homework\\ChemicalElement\\elements.txt";
+    string path = "elements.txt";
     size_t size;
     Element** el_array = el.loadElements(path, size);
     for (size_t i = 0; i < size; i++)
